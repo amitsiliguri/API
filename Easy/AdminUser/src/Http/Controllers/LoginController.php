@@ -1,5 +1,5 @@
 <?php
-// declare(strict_types = 1);
+declare(strict_types = 1);
 
 namespace Easy\AdminUser\Http\Controllers;
 
@@ -14,16 +14,14 @@ use Easy\AdminUser\Models\User;
 
 class LoginController extends Controller
 {
-
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request) : string
     {
-      $user = User::where('email', $request->email)->first();
-
-      if (! $user || ! Hash::check($request->password, $user->password)) {
-          throw ValidationException::withMessages([
-              'email' => ['The provided credentials are incorrect.'],
-          ]);
-      }
-      return $user->createToken($request->device_name)->plainTextToken;
+        $user = User::where('email', $request->email)->first();
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+        return $user->createToken($request->device_name)->plainTextToken;
     }
 }
