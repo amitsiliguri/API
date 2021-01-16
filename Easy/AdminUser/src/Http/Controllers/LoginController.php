@@ -14,7 +14,7 @@ use Easy\AdminUser\Models\User;
 
 class LoginController extends Controller
 {
-    public function login(LoginRequest $request) : string
+    public function requestToken(LoginRequest $request) : Object
     {
         $user = User::where('email', $request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
@@ -22,6 +22,9 @@ class LoginController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-        return $user->createToken($request->device_name)->plainTextToken;
+        return response()->json([
+          'user' => $user,
+          'token' => $user->createToken($request->device_name)->plainTextToken
+        ]);
     }
 }
