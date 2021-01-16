@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e99aa7b1b70d893a85933972ea454bd",
+    "content-hash": "7518d54ba1663f508296a656c663e5fe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -366,6 +366,41 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
+        },
+        {
+            "name": "easy/admin_auth",
+            "version": "dev-Development",
+            "dist": {
+                "type": "path",
+                "url": "../Easy/AdminUser",
+                "reference": "2df977c5f1acb823b7490740fd09e7b71cdefdfb"
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Easy\\AdminUser\\AdminUserServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Easy\\AdminUser\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "amitsiliguri",
+                    "email": "39370641+amitsiliguri@users.noreply.github.com"
+                }
+            ],
+            "description": "admin authentication using santum API token in laravel",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "egulias/email-validator",
@@ -7006,7 +7041,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "easy/admin_auth": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
