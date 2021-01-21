@@ -8,9 +8,17 @@
             <span class="title font-weight-light">Login</span>
           </v-card-title>
           <v-divider></v-divider>
-          <v-progress-linear indeterminate v-if="$store.state.user.login_form_processing"></v-progress-linear>
+          <v-progress-linear indeterminate v-if="$store.state.user.login.processing"></v-progress-linear>
           <v-card-text>
-            <v-text-field v-model="loginFormInputs.email" label="Email" dense outlined clearable class="mt-4"></v-text-field>
+            <v-text-field 
+              v-model="loginFormInputs.email" 
+              label="Email" 
+              :error-messages="$store.state.user.login.email_error"
+              dense 
+              outlined 
+              clearable 
+              class="mt-4">
+            </v-text-field>
             <v-text-field 
               v-model="loginFormInputs.password" 
               autocomplete="password" 
@@ -26,9 +34,9 @@
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn text outlined class="ml-2" @click="requestLogin()" :disabled="$store.state.user.login_form_processing">Submit</v-btn>
+            <v-btn text outlined class="ml-2" @click="requestLogin()" :disabled="$store.state.user.login.processing">Submit</v-btn>
             <v-spacer></v-spacer>
-            <v-btn text  :disabled="$store.state.user.login_form_processing">Forget Password ?</v-btn>
+            <v-btn text  :disabled="$store.state.user.login.processing">Forget Password ?</v-btn>
           </v-card-actions>
         </v-card>
       </v-form>

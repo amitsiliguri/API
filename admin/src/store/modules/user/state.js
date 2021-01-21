@@ -1,10 +1,11 @@
 export default {
     user : null,
     token : null,
-    login_form_processing : false,
     login : {
         email : '',
+        email_error : '',
         password : '',
-        device_name: 'asus'
+        device_name: 'asus',
+        processing : false
     }
 }

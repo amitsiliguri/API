@@ -1,9 +1,12 @@
-import Api from "@/api/Api";
+import axiosApi from "@/api/Api";
 
 const END_POINT = 'user';
 
 export default {
     requestToken(credential) {
-        return Api.post(`${END_POINT}/request/token`, credential);
-    }
+        return axiosApi.post(`${END_POINT}/request/token`, credential);
+    },
+    getCurrentUserDetails(header) {
+        return axiosApi.get(END_POINT, header);
+    },
 }

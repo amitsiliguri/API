@@ -3,12 +3,13 @@ export const SET_USER = (state, data) => {
     state.token = data.token;
     state.login.email = '';
     state.login.password = '';
-    
+    state.login.emai_error = '';
 }
-
 
 export const LOGING_FORM_PROCESS = (state) => {
-    state.login_form_processing = ! state.login_form_processing;
+    state.login.processing = ! state.login.processing;
 }
 
-
+export const LOGING_FORM_ERROR = (state, data) => {
+    state.login.email_error = data.email[0];
+}
