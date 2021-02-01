@@ -1,34 +1,30 @@
 <template>
-    <v-list-group :value="false" no-action :prepend-icon="icon"> 
-        <template v-slot:activator>
-            <v-list-item-content>
-            <v-list-item-title>{{name}}</v-list-item-title>
-            </v-list-item-content>
-        </template> 
-        <v-list-item v-for="([title, icon], i) in children" :key="i" link>
-            <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-title v-text="title"></v-list-item-title>
-        </v-list-item>         
-    </v-list-group>
+    <v-list dense nav >
+        <template v-for="(item,index) in $store.state.general.menu">
+            <template v-if="item.children.length > 0">
+                <menuGroup :children="item.children" :name="item.title" :icon="item.icon" :key="index"></menuGroup>
+            </template>
+            <template v-else>
+                <v-list-item :key="index" link :to="item.to">
+                    <v-list-item-icon>
+                            <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </template>
+        </template>
+        
+      </v-list>
 </template>
 
 <script>
+import menuGroup from '@/components/MenuGroup'
 export default {
-    props: {
-        children: {
-            type: Array,
-            required: true
-        },
-        name : {
-            type: String,
-            required: true
-        },
-        icon : {
-            type: String,
-            required: true
-        }
-    }
+    name: "MainMenu",
+    components: {
+        menuGroup
+    },
 }
 </script>

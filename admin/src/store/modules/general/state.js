@@ -11,24 +11,24 @@ export default {
         {
             title: 'Catalog',
             icon: 'mdi-basket',
-            to : '/about',
+            to : '#',
             children : [
                 {
-                    title: 'Catalog',
-                    icon: 'mdi-basket',
-                    to : '/about',
+                    title: 'Category',
+                    icon: 'mdi-format-list-bulleted-type',
+                    to : '/catalog/category',
                     children : []
                 },
                 {
                     title: 'Product',
                     icon: 'mdi-basket',
-                    to : '/about',
+                    to : '/catalog/product',
                     children : []
                 },
                 {
                     title: 'Warehouse',
-                    icon: 'mdi-basket',
-                    to : '/about',
+                    icon: 'mdi-home',
+                    to : '/catalog/warehouse',
                     children : []
                 }
             ]
