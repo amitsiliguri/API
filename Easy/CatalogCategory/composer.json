@@ -1,0 +1,26 @@
+{
+    "name": "easy/catalog_category",
+    "description": "catalog categories",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "amitsiliguri",
+            "email": "39370641+amitsiliguri@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Easy\\CatalogCategory\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Easy\\CatalogCategory\\CatalogCategoryServiceProvider"
+            ]
+        }
+    }
+}

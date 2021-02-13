@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7518d54ba1663f508296a656c663e5fe",
+    "content-hash": "72c324f6046973973aa83c7589da6a9e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -398,6 +398,41 @@
                 }
             ],
             "description": "admin authentication using santum API token in laravel",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "easy/catalog_category",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../Easy/CatalogCategory",
+                "reference": "56051e490195b4c2d99250efe067a7de2b92e136"
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Easy\\CatalogCategory\\CatalogCategoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Easy\\CatalogCategory\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "amitsiliguri",
+                    "email": "39370641+amitsiliguri@users.noreply.github.com"
+                }
+            ],
+            "description": "catalog categories",
             "transport-options": {
                 "relative": true
             }
@@ -4674,12 +4709,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -7042,7 +7077,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "easy/admin_auth": 20
+        "easy/admin_auth": 20,
+        "easy/catalog_category": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

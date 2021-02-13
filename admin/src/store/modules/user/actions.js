@@ -26,7 +26,6 @@ export const requestToken = ({commit, state}) => {
     });
 }
 
-
 export const getCurrentUserData = ({commit, getters}) => {
     User.getCurrentUserDetails(getters.requestHeaders).then(response => {
         console.log(response.data);

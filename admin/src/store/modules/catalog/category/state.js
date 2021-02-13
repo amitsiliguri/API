@@ -1,6 +1,6 @@
 export default {
   form : {
-    active: true,
+    status: true,
     title: '',
     short_description : '',
     banner: null,
@@ -25,27 +25,52 @@ export default {
     short_description_rules : [v => v.length <= 300 || 'Max 25 characters'],
   },
   list: [
-        {
-          name: "Default",
-          tasks: [
-            {
-              name: "Category one",
-              tasks: []
-            }
-          ]
-        },
-        {
-          name: "Category two",
-          tasks: [
-            {
-              name: "Category three",
-              tasks: []
-            }
-          ]
-        },
-        {
-          name: "Category four",
-          tasks: []
-        }
+          {
+            status: true,
+            title: 'Default',
+            short_description : '',
+            banner: null,
+            slug: '',
+            meta_title: '',
+            meta_description : '',
+            meta_banner: null,
+            children: [
+              {
+                status: true,
+                title: 'Category one',
+                short_description : '',
+                banner: null,
+                slug: '',
+                meta_title: '',
+                meta_description : '',
+                meta_banner: null,
+                children: []
+              }
+            ]
+          },
+          {
+            status: true,
+            title: 'Category two',
+            short_description : '',
+            banner: null,
+            slug: '',
+            meta_title: '',
+            meta_description : '',
+            meta_banner: null,
+            children: [
+              {
+                status: true,
+                title: 'Category three',
+                short_description : '',
+                banner: null,
+                slug: '',
+                meta_title: '',
+                meta_description : '',
+                meta_banner: null,
+                children: []
+              }
+            ]
+          },
+        
     ]
 }

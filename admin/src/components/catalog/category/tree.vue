@@ -1,11 +1,11 @@
 <template>
     <draggable class="dragArea" tag="ul" :list="tasks" :group="{ name: 'g1' }">
-        <li v-for="el in tasks" :key="el.name">
+        <li v-for="(el,index) in tasks" :key="index">
             <div class="bar">
                 <v-btn icon>
                     <v-icon>mdi-menu-right</v-icon>
                 </v-btn>
-                <span class="node-name">{{ el.name }}</span>
+                <span class="node-name">{{ el.title }}</span>
                 <v-btn icon>
                     <v-icon>mdi-delete</v-icon>
                 </v-btn>
@@ -13,7 +13,7 @@
                     <v-icon>mdi-pencil</v-icon>
                 </v-btn>
             </div>
-            <nested-draggable :tasks="el.tasks" />
+            <nested-draggable :tasks="el.children" />
         </li>
     </draggable>
 </template>

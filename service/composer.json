@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "easy/admin_auth": "dev-Development",
+        "easy/catalog_category": "dev-master",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -65,6 +66,10 @@
         "admin_user": {
             "type": "path",
             "url": "../Easy/AdminUser"
+        },
+        "catalog_category": {
+            "type": "path",
+            "url": "../Easy/CatalogCategory"
         }
     }
 }
