@@ -14,17 +14,20 @@
       <router-view/>
     </v-main>
     <notifications/>
+    <loader/>
   </v-app>
 </template>
 
 <script>
+import loader from '@/components/loader'
 import notifications from '@/components/Notifications'
 import leftmenu from '@/components/Menu'
 export default {
   name: "App",
   components: {
     notifications,
-    leftmenu
+    leftmenu,
+    loader
   },
   data () {
     return {

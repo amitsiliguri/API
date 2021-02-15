@@ -3,8 +3,9 @@
 namespace Easy\CatalogCategory\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CategoryCreate extends FormRequest
+class CategoryUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +27,12 @@ class CategoryCreate extends FormRequest
         return [
             'status'            => 'required',
             'title'             => 'required|max:100',
-            'slug'              => 'required|string|unique:categories',
+            'slug'              => ['required', 'string', Rule::unique('categories')->ignore($this->id)],
             'banner'            => 'nullable|image|mimes:jpeg,jpg,png|max:512',
             'description'       => 'nullable',
             'meta_title'        => 'nullable|string|max:100' ,
             'meta_description'  => 'nullable|string|max:170',
-            'meta_image'        => 'nullable|image|mimes:jpeg,jpg,png|max:512',
+            'meta_image'        => 'nullable|image|mimes:jpeg,jpg,png|max:512'
         ];
     }
 }

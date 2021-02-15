@@ -1,6 +1,7 @@
 export default {
     snackbar: false,
     snackbar_text: '',
+    loader: false,
     menu : [
         { 
             title: 'Dashboard', 

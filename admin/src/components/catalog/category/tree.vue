@@ -9,7 +9,7 @@
                 <v-btn icon>
                     <v-icon>mdi-delete</v-icon>
                 </v-btn>
-                <v-btn icon>
+                <v-btn icon @click="editList(el.id)">
                     <v-icon>mdi-pencil</v-icon>
                 </v-btn>
             </div>
@@ -19,18 +19,26 @@
 </template>
 
 <script>
+    import {mapActions} from "vuex";
     import draggable from "vuedraggable";
     export default {
-    props: {
-        tasks: {
-            required: true,
-            type: Array
+        name: "nested-draggable",
+        props: {
+            tasks: {
+                required: true,
+                type: Array
+            }
+        },
+        components: {
+            draggable
+        },
+        methods: {
+            ...mapActions(
+                {
+                    editList : "catalogcategory/editList"
+                }
+            )
         }
-    },
-    components: {
-        draggable
-    },
-    name: "nested-draggable"
     };
 </script>
 
