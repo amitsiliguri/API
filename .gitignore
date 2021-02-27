@@ -1,13 +1,1 @@
-/service/node_modules
-/service/public/hot
-/service/public/storage
-/service/storage/*.key
-/service/vendor
-/service/.env
-/service/.env.backup
-/service/.phpunit.result.cache
-/service/docker-compose.override.yml
-/service/Homestead.json
-/service/Homestead.yaml
-/service/npm-debug.log
-/service/yarn-error.log
+/backend
