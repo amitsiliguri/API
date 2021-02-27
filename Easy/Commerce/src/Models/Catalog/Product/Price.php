@@ -27,7 +27,7 @@ class Price extends Model
      */
     protected $fillable = [
         'quantity',
-        'base_price',
+        'tier_price',
         'special_price',
         'offer_start',
         'offer_end',
@@ -37,7 +37,7 @@ class Price extends Model
     /**
     * Get the product that owns the price.
     */
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('Easy\Commerce\Models\Catalog\Product\Product', 'product_id', 'id');
     }

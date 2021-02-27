@@ -35,7 +35,7 @@ const routes = [
     path: "/catalog/product",
     name: "CatalogProduct", 
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Catalog/Product.vue")
+      import(/* webpackChunkName: "about" */ "../views/Catalog/Product/Index.vue")
   },
   {
     path: "/catalog/warehouse",

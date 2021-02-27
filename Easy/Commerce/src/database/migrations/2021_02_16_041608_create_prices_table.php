@@ -16,7 +16,7 @@ class CreatePricesTable extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->double('base_price', 8, 2);
+            $table->double('tier_price', 8, 2);
             $table->double('special_price', 8, 2)->nullable();
             $table->date('offer_start')->nullable();
             $table->date('offer_end')->nullable();

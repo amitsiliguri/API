@@ -32,6 +32,7 @@ class Product extends Model
         'small_description',
         'description',
         'slug',
+        'base_price',
         'meta_title',
         'meta_description',
         'meta_image'
@@ -40,7 +41,7 @@ class Product extends Model
     /**
      * Get the prices for the product.
      */
-    public function prices()
+    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('Easy\Commerce\Models\Catalog\Product\Price', 'product_id', 'id');
     }
@@ -48,7 +49,7 @@ class Product extends Model
     /**
      * Get the images for the product.
      */
-    public function images()
+    public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('Easy\Commerce\Models\Catalog\Product\Image', 'product_id', 'id');
     }
@@ -64,7 +65,7 @@ class Product extends Model
     /**
      * The categories that belong to the product.
      */
-    public function categories()
+    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany('Easy\Commerce\Models\Catalog\category','category_products', 'product_id', 'category_id');
     }

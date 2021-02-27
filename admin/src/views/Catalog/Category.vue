@@ -38,12 +38,12 @@
       this.loadTree()
     },
     methods : {
-    ...mapActions(
-      {
-        saveReorder : "catalogcategory/saveReorder",
-        loadTree : "catalogcategory/loadTree"
-      }
-    )
-  }
+      ...mapActions(
+        {
+          saveReorder : "catalogcategory/saveReorder",
+          loadTree : "catalogcategory/loadTree"
+        }
+      )
+    }
   }
 </script>

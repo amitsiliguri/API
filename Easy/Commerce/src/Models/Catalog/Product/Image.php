@@ -33,7 +33,7 @@ class Image extends Model
     /**
      * Get the product that owns the image.
      */
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('Easy\Commerce\Models\Catalog\Product\Product', 'product_id', 'id');
     }
