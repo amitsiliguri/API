@@ -37,7 +37,38 @@ class Product extends Model
         'meta_description',
         'meta_image'
     ];
-
+    /**
+     * @var int|bool
+     */
+    private $status;
+    /**
+     * @var string
+     */
+    private $sku;
+    /**
+     * @var string
+     */
+    private $title;
+    /**
+     * @var string
+     */
+    private $small_description;
+    /**
+     * @var string
+     */
+    private $description;
+    /**
+     * @var string
+     */
+    private $slug;
+    /**
+     * @var string
+     */
+    private $meta_title;
+    /**
+     * @var string
+     */
+    private $meta_description;
     /**
      * Get the prices for the product.
      */

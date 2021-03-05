@@ -10,6 +10,12 @@ export default {
             children : []
         },
         {
+            title: 'Sales',
+            icon: 'mdi-currency-inr',
+            to : '#',
+            children : []
+        },
+        {
             title: 'Catalog',
             icon: 'mdi-basket',
             to : '#',
@@ -35,10 +41,23 @@ export default {
             ]
         },
         {
-            title: 'Sales',
-            icon: 'mdi-account-multiple-outline',
+            title: 'Vendor',
+            icon: 'mdi-account',
             to : '#',
-            children : []
+            children : [
+                {
+                    title: 'Vendor list',
+                    icon: 'mdi-format-list-bulleted-type',
+                    to : '/vendor/list',
+                    children : []
+                },
+                {
+                    title: 'Purchase',
+                    icon: 'mdi-basket',
+                    to : '/purchase/list',
+                    children : []
+                }
+            ]
         },
     ],
 }

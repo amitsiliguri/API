@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePricesTable extends Migration
+class CreatePurchaseItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreatePricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prices', function (Blueprint $table) {
+        Schema::create('purchase_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->double('tier_price', 8, 4);
-            $table->double('special_price', 8, 4)->nullable();
-            $table->date('offer_start')->nullable();
-            $table->date('offer_end')->nullable();
             $table->foreignId('product_id');
+            $table->foreignId('purchase_id');
+            $table->double('purchase_cost_per_unit', 8, 4);
+            $table->integer('quantity');
             $table->timestamps();
         });
-        Schema::table('prices', function (Blueprint $table) {
+
+        Schema::table('purchase_items', function (Blueprint $table) {
             $table->foreign('product_id')->references('id')->on('products')->constrained()->onDelete('cascade');
+            $table->foreign('purchase_id')->references('id')->on('purchases')->constrained()->onDelete('cascade');
         });
     }
 
@@ -35,6 +35,6 @@ class CreatePricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prices');
+        Schema::dropIfExists('purchase_items');
     }
 }

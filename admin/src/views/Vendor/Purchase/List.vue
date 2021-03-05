@@ -10,7 +10,7 @@
         >
         <template v-slot:top>
             <v-toolbar flat >
-              <v-toolbar-title>Warehouse</v-toolbar-title>
+              <v-toolbar-title>Purchases</v-toolbar-title>
               <v-divider class="mx-4" inset vertical></v-divider>
               <v-btn icon>
                 <v-icon small> mdi-delete </v-icon>

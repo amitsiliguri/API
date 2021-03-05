@@ -10,3 +10,12 @@ export const SET_PRODUCT_TABLE_OPTIONS = (state, data) => {
 export const PRODUCT_TABLE_LOADING = (state) => {
     state.loading = !state.loading;
 }
+
+export const RESET_PRODUCT_FORM_DATA = (state) => {
+    state.resetForrm = !state.resetForrm;
+}
+
+
+export const SET_SELECTED_CATEGORIES = (state, data) => {
+    state.form.categories = data;
+}

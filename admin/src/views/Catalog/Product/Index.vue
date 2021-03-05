@@ -11,10 +11,25 @@
             'items-per-page-options':itemsPerPageOptions
           }"
           :items-per-page="options.itemsPerPage"
-          height="500"
+          height="450"
           loader-height="2"
           class="elevation-1"
         >
+
+          <template v-slot:top>
+            <v-toolbar flat >
+              <v-toolbar-title>Products</v-toolbar-title>
+              <v-divider class="mx-4" inset vertical></v-divider>
+              <v-btn icon>
+                <v-icon small> mdi-delete </v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" depressed dark class="mb-2" to="/catalog/product/create">
+                Add New Item
+              </v-btn>
+            </v-toolbar>
+          </template>
+
         </v-data-table>
       </v-col>
     </v-row>
@@ -26,18 +41,10 @@
   import { mapActions} from "vuex";
   export default {
     computed: {
-      headers() {
-        return this.$store.state.catalogproduct.headers
-      },
-      items() {
-        return this.$store.state.catalogproduct.data
-      },
-      loading() {
-        return this.$store.state.catalogproduct.loading
-      },
-      itemsPerPageOptions (){
-        return this.$store.state.catalogproduct.itemsPerPageOptions
-      },
+      headers() { return this.$store.state.catalogproduct.headers },
+      items() { return this.$store.state.catalogproduct.data },
+      loading() { return this.$store.state.catalogproduct.loading },
+      itemsPerPageOptions (){ return this.$store.state.catalogproduct.itemsPerPageOptions },
       options: {
         // getter
         get: function () {

@@ -23,6 +23,6 @@ class CreateController extends Controller
         $catalogCategory->save();
         return response()->json([
             'data' => $catalogCategory
-          ]);
+        ]);
     }
 }

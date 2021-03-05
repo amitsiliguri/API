@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from '@/store/index';
+// import store from '@/store/index';
 
 
 import Home from "@/views/Home.vue";
@@ -38,10 +38,34 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Catalog/Product/Index.vue")
   },
   {
+    path: "/catalog/product/create",
+    name: "CatalogProductCreate", 
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Catalog/Product/Create.vue")
+  },
+  {
     path: "/catalog/warehouse",
     name: "CatalogWarehouse", 
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Catalog/Warehouse.vue")
+  },
+  {
+    path: "/vendor/list",
+    name: "VendorList", 
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Vendor/List.vue")
+  },
+  {
+    path: "/vendor/create",
+    name: "VendorCreate", 
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Vendor/Create.vue")
+  },
+  {
+    path: "/purchase/list",
+    name: "purchaseList", 
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Vendor/Purchase/List.vue")
   },
 ];
 
@@ -53,20 +77,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
-
-
-router.beforeEach((to, from, next) => {
-  if (to.fullPath === '/') {
-    if (store.state.user.token) {
-      next('/about');
-    }
-  } else {
-    if (! store.state.user.token) {
-      next('/');
-    }
-  }
-  next();
-});
-
 
 export default router;

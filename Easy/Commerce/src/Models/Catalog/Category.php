@@ -56,8 +56,8 @@ class Category extends Model
     /**
      * The products that belong to the category.
      */
-    // public function products()
-    // {
-    //     return $this->belongsToMany('Easy\Commerce\Models\Product','category_products', 'category_id', 'product_id');
-    // }
+     public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     {
+         return $this->belongsToMany('Easy\Commerce\Models\Product\Product','category_products', 'category_id', 'product_id');
+     }
 }

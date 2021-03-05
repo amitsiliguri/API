@@ -21,8 +21,8 @@ class CreateProductsTable extends Migration
             $table->text('small_description')->nullable();
             $table->text('description')->nullable();
             $table->tinyInteger('type')->default(1);
+            $table->double('base_price', 8, 4)->default(00.0000);
             $table->string('slug', 100)->unique();
-            $table->double('base_price', 8, 2);
             $table->string('meta_title', 100)->nullable();
             $table->string('meta_description', 170)->nullable();
             $table->string('meta_image', 191)->nullable();

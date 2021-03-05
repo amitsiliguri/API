@@ -9,6 +9,19 @@ import "@mdi/font/css/materialdesignicons.css";
 
 Vue.config.productionTip = false;
 
+router.beforeEach((to, from, next) => {
+  if (to.fullPath === '/') {
+    if (store.state.user.token) {
+      next('/about');
+    }
+  } else {
+    if (! store.state.user.token) {
+      next('/');
+    }
+  }
+  next();
+});
+
 new Vue({
   router,
   store,

@@ -10,12 +10,15 @@
         >
         <template v-slot:top>
             <v-toolbar flat >
-              <v-toolbar-title>Warehouse</v-toolbar-title>
+              <v-toolbar-title>Vendors</v-toolbar-title>
               <v-divider class="mx-4" inset vertical></v-divider>
               <v-btn icon>
                 <v-icon small> mdi-delete </v-icon>
               </v-btn>
               <v-spacer></v-spacer>
+              <v-btn color="primary" depressed dark class="mb-2" to="/vendor/create">
+                Add New Vendor
+              </v-btn>
             </v-toolbar>
           </template>
         </v-data-table>
