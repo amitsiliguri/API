@@ -1,6 +1,6 @@
 <?php
 
-namespace Easy\Commerce\Models\Vendor\Purchase;
+namespace Easy\Commerce\Models\Manufacturer\Purchase;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

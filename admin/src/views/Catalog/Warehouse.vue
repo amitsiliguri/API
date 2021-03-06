@@ -7,14 +7,15 @@
           :items="desserts"
           :items-per-page="5"
           class="elevation-1"
+          show-select
         >
         <template v-slot:top>
             <v-toolbar flat >
-              <v-toolbar-title>Warehouse</v-toolbar-title>
-              <v-divider class="mx-4" inset vertical></v-divider>
               <v-btn icon>
                 <v-icon small> mdi-delete </v-icon>
               </v-btn>
+              <v-divider class="mx-4" inset vertical></v-divider>
+              <v-toolbar-title>Warehouse</v-toolbar-title>
               <v-spacer></v-spacer>
             </v-toolbar>
           </template>

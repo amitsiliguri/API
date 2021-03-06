@@ -1,11 +1,11 @@
 <?php
 
-namespace Easy\Commerce\Models\Vendor;
+namespace Easy\Commerce\Models\Supplier;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vendor extends Model
+class SupplierContactPerson extends Model
 {
     use HasFactory;
     /**
@@ -13,7 +13,7 @@ class Vendor extends Model
      *
      * @var string
      */
-    protected $table = 'vendors';
+    protected $table = 'supplier_contact_people';
     /**
      * The primary key associated with the table.
      *
@@ -26,19 +26,23 @@ class Vendor extends Model
      * @var array
      */
     protected $fillable = [
-        'status',
+        'active',
+        'type',
+        'job_title',
         'prefix',
         'first_name',
         'middle_name',
         'last_name',
         'email',
         'phone',
+        'gender',
     ];
+
     /**
-     * Get the prices for the product.
+     * Get the Manufacture company of this contact person.
      */
-    public function purchases(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function supplier(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany('Easy\Commerce\Models\Vendor\Purchase\Purchase', 'vendor_id', 'id');
+        return $this->belongsTo('Easy\Commerce\Models\Supplier\Supplier', 'supplier_id', 'id');
     }
 }

@@ -1,7 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import store from '@/store/index';
-
 
 import Home from "@/views/Home.vue";
 
@@ -50,22 +48,22 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Catalog/Warehouse.vue")
   },
   {
-    path: "/vendor/list",
-    name: "VendorList", 
+    path: "/supplier/list",
+    name: "SupplierList", 
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Vendor/List.vue")
+      import(/* webpackChunkName: "about" */ "../views/Supplier/List.vue")
   },
   {
-    path: "/vendor/create",
-    name: "VendorCreate", 
+    path: "/supplier/create",
+    name: "SupplierCreate", 
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Vendor/Create.vue")
+      import(/* webpackChunkName: "about" */ "../views/Supplier/Create.vue")
   },
   {
-    path: "/purchase/list",
+    path: "/supplier/purchase/list",
     name: "purchaseList", 
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Vendor/Purchase/List.vue")
+      import(/* webpackChunkName: "about" */ "../views/Supplier/Purchase/List.vue")
   },
 ];
 

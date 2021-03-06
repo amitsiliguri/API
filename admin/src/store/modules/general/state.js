@@ -41,20 +41,20 @@ export default {
             ]
         },
         {
-            title: 'Vendor',
+            title: 'Suppliers',
             icon: 'mdi-account',
             to : '#',
             children : [
                 {
-                    title: 'Vendor list',
+                    title: 'list',
                     icon: 'mdi-format-list-bulleted-type',
-                    to : '/vendor/list',
+                    to : '/supplier/list',
                     children : []
                 },
                 {
                     title: 'Purchase',
                     icon: 'mdi-basket',
-                    to : '/purchase/list',
+                    to : '/supplier/purchase/list',
                     children : []
                 }
             ]

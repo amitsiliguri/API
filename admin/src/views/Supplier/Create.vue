@@ -11,7 +11,7 @@
 
 <script>
 //   import {mapActions} from "vuex";
-  import vendorForm from '@/components/vendor/create'
+  import vendorForm from '@/components/supplier/Create'
   export default {
     name: "Category",
     components : {

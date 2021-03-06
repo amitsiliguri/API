@@ -5,20 +5,20 @@
             <v-expansion-panel>
                 <v-expansion-panel-header>General</v-expansion-panel-header>
                 <v-expansion-panel-content>
-                    <v-row>
-                        <v-col cols="12" md="2" class="py-0">
+                    <v-row justify="center">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-switch v-model="formData.status" flat label="Is active?" ></v-switch>
                         </v-col>
-                        <v-col cols="12" sm="6" md="5" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-text-field v-model="formData.sku" :rules="formDataRules.skuRules" :counter="50" dense outlined label="SKU" required ></v-text-field>
                         </v-col>
-                        <v-col cols="12" sm="6" md="5" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-text-field v-model="formData.title" :rules="formDataRules.titleRules" :counter="50" dense outlined label="Name" required ></v-text-field>
                         </v-col>
-                        <v-col cols="12" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-textarea v-model="formData.small_description" outlined :counter="300" label="Small Description" dense rows="4" clearable clear-icon="mdi-close-circle"></v-textarea>
                         </v-col>
-                        <v-col cols="12" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-textarea v-model="formData.description" outlined :counter="300" label="Description" dense rows="8" clearable clear-icon="mdi-close-circle"></v-textarea>
                         </v-col>
                     </v-row>
@@ -28,14 +28,14 @@
             <v-expansion-panel>
                 <v-expansion-panel-header>SEO</v-expansion-panel-header>
                 <v-expansion-panel-content>
-                    <v-row>
-                        <v-col cols="12" sm="6" class="py-0">
+                    <v-row justify="center">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-text-field v-model="formData.slug" :rules="formDataRules.slugRules" :counter="60" label="Slug" placeholder="Puoduct unique slug" outlined dense required></v-text-field>
                         </v-col>
-                        <v-col cols="12" sm="6" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-text-field v-model="formData.meta_title" label="Meta Title" placeholder="SEO Title" dense outlined></v-text-field>
                         </v-col>
-                        <v-col cols="12" class="py-0">
+                        <v-col cols="12" sm="9" class="py-0">
                             <v-textarea v-model="formData.meta_description" outlined :counter="170" label="Meta Description" dense rows="3" clearable clear-icon="mdi-close-circle"></v-textarea>
                         </v-col>
                     </v-row>

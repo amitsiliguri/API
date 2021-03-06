@@ -14,15 +14,16 @@
           height="450"
           loader-height="2"
           class="elevation-1"
+          show-select
         >
 
           <template v-slot:top>
             <v-toolbar flat >
-              <v-toolbar-title>Products</v-toolbar-title>
-              <v-divider class="mx-4" inset vertical></v-divider>
               <v-btn icon>
                 <v-icon small> mdi-delete </v-icon>
               </v-btn>
+              <v-divider class="mx-4" inset vertical></v-divider>
+              <v-toolbar-title>Products</v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn color="primary" depressed dark class="mb-2" to="/catalog/product/create">
                 Add New Item
@@ -55,10 +56,10 @@
           //set data
           this.setOptionValues(newValue)
           // set url parameter
-          let url = new URL(window.location.href)
-          url.searchParams.set('page', newValue.page)
-          url.searchParams.set('itemsPerPage', newValue.itemsPerPage)
-          history.pushState(null, document.title, url.toString())
+          // let url = new URL(window.location.href)
+          // url.searchParams.set('page', newValue.page)
+          // url.searchParams.set('itemsPerPage', newValue.itemsPerPage)
+          // history.pushState(null, document.title, url.toString())
           // load table data
           this.loadProducts({
             page : newValue.page,
@@ -68,18 +69,22 @@
       }
     },
     mounted () {
-      let url = new URL(window.location.href)
-      if (url.searchParams.get('page')) {
-        this.options.page = url.searchParams.get('page')
-      }else{
-        this.options.page = 1
-      }
-      if (url.searchParams.get('itemsPerPage')) {
-        this.options.itemsPerPage = 10
-        // this.options.itemsPerPage = this.findClosest( this.itemsPerPageOptions , url.searchParams.get('itemsPerPage') )  // ClosestInArray mixin
-      }else{
-        this.options.itemsPerPage = 10
-      }
+      this.loadProducts({
+        page : 1,
+        itemsPerPage : 10
+      })
+      // let url = new URL(window.location.href)
+      // if (url.searchParams.get('page')) {
+      //   this.options.page = url.searchParams.get('page')
+      // }else{
+      //   this.options.page = 1
+      // }
+      // if (url.searchParams.get('itemsPerPage')) {
+      //   this.options.itemsPerPage = 10
+      //   // this.options.itemsPerPage = this.findClosest( this.itemsPerPageOptions , url.searchParams.get('itemsPerPage') )  // ClosestInArray mixin
+      // }else{
+      //   this.options.itemsPerPage = 10
+      // }
     },
     methods : {
       ...mapActions(
