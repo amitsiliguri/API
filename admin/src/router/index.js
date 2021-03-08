@@ -19,56 +19,59 @@ const routes = [
   },
   {
     path: "/dashboard",
-    name: "Dashboard", 
+    name: "Dashboard",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Dashboard.vue")
   },
   {
     path: "/catalog/category",
-    name: "CatalogCategory", 
+    name: "catalogCategory",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Catalog/Category.vue")
   },
   {
     path: "/catalog/product",
-    name: "CatalogProduct", 
+    name: "catalogProduct",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Catalog/Product/Index.vue")
+      import(
+        /* webpackChunkName: "about" */ "../views/Catalog/Product/Index.vue"
+      )
   },
   {
     path: "/catalog/product/create",
-    name: "CatalogProductCreate", 
+    name: "catalogProductCreate",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Catalog/Product/Create.vue")
+      import(
+        /* webpackChunkName: "about" */ "../views/Catalog/Product/Create.vue"
+      )
   },
   {
     path: "/catalog/warehouse",
-    name: "CatalogWarehouse", 
+    name: "CatalogWarehouse",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Catalog/Warehouse.vue")
   },
   {
     path: "/supplier/list",
-    name: "SupplierList", 
+    name: "SupplierList",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Supplier/List.vue")
   },
   {
     path: "/supplier/create",
-    name: "SupplierCreate", 
+    name: "SupplierCreate",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Supplier/Create.vue")
   },
   {
     path: "/supplier/purchase/list",
-    name: "purchaseList", 
+    name: "purchaseList",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Supplier/Purchase/List.vue")
-  },
+      import(
+        /* webpackChunkName: "about" */ "../views/Supplier/Purchase/List.vue"
+      )
+  }
 ];
-
-
-
 
 const router = new VueRouter({
   mode: "history",

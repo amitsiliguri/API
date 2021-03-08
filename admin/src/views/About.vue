@@ -5,15 +5,13 @@
   </div>
 </template>
 <script>
-  import { mapActions} from "vuex";
-  export default {
-    name: "About",
-    methods : {
-    ...mapActions(
-      {
-        getCurrentUser : "user/getCurrentUserData"
-      }
-    )
+import { mapActions } from "vuex";
+export default {
+  name: "About",
+  methods: {
+    ...mapActions({
+      getCurrentUser: "user/getCurrentUserData"
+    })
   }
-  }
+};
 </script>

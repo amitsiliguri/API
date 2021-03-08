@@ -8,35 +8,49 @@
             <span class="title font-weight-light">Login</span>
           </v-card-title>
           <v-divider></v-divider>
-          <v-progress-linear indeterminate v-if="$store.state.user.login.processing"></v-progress-linear>
+          <v-progress-linear
+            indeterminate
+            v-if="$store.state.user.login.processing"
+          ></v-progress-linear>
           <v-card-text>
-            <v-text-field 
-              v-model="loginFormInputs.email" 
-              label="Email" 
+            <v-text-field
+              v-model="loginFormInputs.email"
+              label="Email"
               :error-messages="$store.state.user.login.email_error"
-              dense 
-              outlined 
-              clearable 
-              class="mt-4">
+              dense
+              outlined
+              clearable
+              class="mt-4"
+            >
             </v-text-field>
-            <v-text-field 
-              v-model="loginFormInputs.password" 
-              autocomplete="password" 
+            <v-text-field
+              v-model="loginFormInputs.password"
+              autocomplete="password"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showPassword = !showPassword"
-              label="Password" 
-              :type="showPassword ? 'text' : 'password'" 
-              dense 
-              outlined 
-              clearable 
-              class="mt-2">
+              label="Password"
+              :type="showPassword ? 'text' : 'password'"
+              dense
+              outlined
+              clearable
+              class="mt-2"
+            >
             </v-text-field>
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn text outlined class="ml-2" @click="requestLogin()" :disabled="$store.state.user.login.processing">Submit</v-btn>
+            <v-btn
+              text
+              outlined
+              class="ml-2"
+              @click="requestLogin()"
+              :disabled="$store.state.user.login.processing"
+              >Submit</v-btn
+            >
             <v-spacer></v-spacer>
-            <v-btn text  :disabled="$store.state.user.login.processing">Forget Password ?</v-btn>
+            <v-btn text :disabled="$store.state.user.login.processing"
+              >Forget Password ?</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-form>
@@ -45,24 +59,22 @@
 </template>
 
 <script>
-import { mapActions} from "vuex";
+import { mapActions } from "vuex";
 export default {
   name: "Home",
   data: () => ({
     valid: false,
-    showPassword : false
+    showPassword: false
   }),
   computed: {
-    loginFormInputs () {
-      return this.$store.state.user.login
+    loginFormInputs() {
+      return this.$store.state.user.login;
     }
   },
-  methods : {
-    ...mapActions(
-      {
-        requestLogin : "user/requestToken"
-      }
-    )
+  methods: {
+    ...mapActions({
+      requestLogin: "user/requestToken"
+    })
   }
 };
 </script>

@@ -1,28 +1,34 @@
 import User from "@/api/User";
-import router from '@/router/index'
+import router from "@/router/index";
 
-
-export const requestToken = ({commit, state}) => {
-    commit('LOGING_FORM_PROCESS');
-    User.requestToken(state.login)
+export const requestToken = ({ commit, state }) => {
+  commit("LOGGING_FORM_PROCESS");
+  User.requestToken(state.login)
     .then(response => {
-        commit('SET_USER', response.data);
-        commit('LOGING_FORM_PROCESS');
-        router.push({
-            name:'About'
-        })
-    }).catch(err => {
-        if (err.response) {
-            if (err.response.status == 422) {
-                commit('general/SHOW_NOTIFICATIONS', err.response.data.message, { root: true });
-                commit('LOGING_FORM_ERROR', err.response.data.errors);
-            }
-        } else {
-            commit('general/SHOW_NOTIFICATIONS', 'Something went wrong while loggingIn. Please try again.', { root: true });
+      commit("SET_USER", response.data);
+      commit("LOGGING_FORM_PROCESS");
+      router.push({
+        name: "About"
+      });
+    })
+    .catch(err => {
+      if (err.response) {
+        if (err.response.status == 422) {
+          commit("general/SHOW_NOTIFICATIONS", err.response.data.message, {
+            root: true
+          });
+          commit("LOGGING_FORM_ERROR", err.response.data.errors);
         }
-        commit('LOGING_FORM_PROCESS');
+      } else {
+        commit(
+          "general/SHOW_NOTIFICATIONS",
+          "Something went wrong while loggingIn. Please try again.",
+          { root: true }
+        );
+      }
+      commit("LOGGING_FORM_PROCESS");
     });
-}
+};
 
 // export const getCurrentUserData = ({commit, getters}) => {
 //     User.getCurrentUserDetails(getters.requestHeaders).then(response => {

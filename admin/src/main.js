@@ -10,13 +10,13 @@ import "@mdi/font/css/materialdesignicons.css";
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
-  if (to.fullPath === '/') {
+  if (to.fullPath === "/") {
     if (store.state.user.token) {
-      next('/about');
+      next("/about");
     }
   } else {
-    if (! store.state.user.token) {
-      next('/');
+    if (!store.state.user.token) {
+      next("/");
     }
   }
   next();

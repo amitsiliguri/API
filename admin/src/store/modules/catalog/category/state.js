@@ -1,15 +1,15 @@
 export default {
-  resetForrm :false,
+  resetForm: false,
   list: [],
-  form : {
-    id : null,
+  form: {
+    id: null,
     status: true,
-    title: '',
-    short_description : '',
+    title: "",
+    short_description: "",
     banner: null,
-    slug: '',
-    meta_title: '',
-    meta_description : '',
+    slug: "",
+    meta_title: "",
+    meta_description: "",
     meta_banner: null
   }
-}
+};
