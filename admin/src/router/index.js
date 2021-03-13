@@ -21,20 +21,20 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Dashboard.vue")
+      import(/* webpackChunkName: "Dashboard" */ "../views/Dashboard.vue")
   },
   {
     path: "/catalog/category",
     name: "catalogCategory",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Catalog/Category.vue")
+      import(/* webpackChunkName: "catalogCategory" */ "../views/Catalog/Category.vue")
   },
   {
     path: "/catalog/product",
     name: "catalogProduct",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/Catalog/Product/Index.vue"
+        /* webpackChunkName: "catalogProduct" */ "../views/Catalog/Product/Index.vue"
       )
   },
   {
@@ -42,33 +42,39 @@ const routes = [
     name: "catalogProductCreate",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/Catalog/Product/Create.vue"
+        /* webpackChunkName: "catalogProductCreate" */ "../views/Catalog/Product/Create.vue"
       )
   },
   {
     path: "/catalog/warehouse",
     name: "CatalogWarehouse",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Catalog/Warehouse.vue")
+      import(/* webpackChunkName: "CatalogWarehouse" */ "../views/Catalog/Warehouse.vue")
   },
   {
     path: "/supplier/list",
     name: "SupplierList",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Supplier/List.vue")
+      import(/* webpackChunkName: "SupplierList" */ "../views/Supplier/List.vue")
   },
   {
     path: "/supplier/create",
     name: "SupplierCreate",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Supplier/Create.vue")
+      import(/* webpackChunkName: "SupplierCreate" */ "../views/Supplier/Create.vue")
+  },
+  {
+    path: "/supplier/edit",
+    name: "SupplierEdit",
+    component: () =>
+      import(/* webpackChunkName: "SupplierEdit" */ "../views/Supplier/Edit.vue")
   },
   {
     path: "/supplier/purchase/list",
-    name: "purchaseList",
+    name: "PurchaseList",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "../views/Supplier/Purchase/List.vue"
+        /* webpackChunkName: "PurchaseList" */ "../views/Supplier/Purchase/List.vue"
       )
   }
 ];

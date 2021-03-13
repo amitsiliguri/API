@@ -14,7 +14,7 @@ use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as prod
 //Supplier
 use Easy\Commerce\Http\Controllers\Supplier\Admin\StoreController as supplierStoreController;
 use Easy\Commerce\Http\Controllers\Supplier\Admin\IndexController as supplierIndexController;
-
+use Easy\Commerce\Http\Controllers\Supplier\Admin\EditController as supplierEditController;
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('request/token', [LoginController::class, 'requestToken'])->name('request.token');
@@ -38,5 +38,6 @@ Route::prefix('product')->name('product.')->middleware('auth:sanctum')->group(fu
 // Supplier
 Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(function () {
     Route::get('/', [supplierIndexController::class, 'index'])->name('index');
+    Route::get('edit/{id}', [supplierEditController::class, 'edit'])->name('edit');
     Route::post('store', [supplierStoreController::class, 'store'])->name('store');
 });

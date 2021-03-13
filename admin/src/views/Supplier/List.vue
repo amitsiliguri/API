@@ -29,12 +29,20 @@
                 depressed
                 dark
                 class="mb-2"
-                to="/supplier/create"
+                @click="createSupplier()"
               >
-                Add New Item
+                Add New Supplier
               </v-btn>
             </v-toolbar>
           </template>
+
+          <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small class="mr-2" @click="editSupplier(item.id)">
+              mdi-pencil
+            </v-icon>
+          </template>
+
+
         </v-data-table>
       </v-col>
     </v-row>
@@ -65,7 +73,7 @@ export default {
       // setter
       set: function(newValue) {
         this.setOptionValues(newValue);
-        this.loadProducts({
+        this.loadSuppliers({
           page: newValue.page,
           itemsPerPage: newValue.itemsPerPage
         });
@@ -73,15 +81,17 @@ export default {
     }
   },
   mounted() {
-    this.loadProducts({
+    this.loadSuppliers({
       page: 1,
       itemsPerPage: 10
     });
   },
   methods: {
     ...mapActions({
-      loadProducts: "supplier/loadProducts",
-      setOptionValues: "supplier/setOptionValues"
+      loadSuppliers: "supplier/loadSuppliers",
+      setOptionValues: "supplier/setOptionValues",
+      editSupplier: "supplier/editSupplier",
+      createSupplier: "supplier/createSupplier"
     })
   }
 };

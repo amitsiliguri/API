@@ -16,6 +16,7 @@ class CreateSupplierAddressesTable extends Migration
         Schema::create('supplier_addresses', function (Blueprint $table) {
             $table->id();
             $table->string('building_name', 100);
+            $table->string('type')->default('main');
             $table->string('floor', 100);
             $table->string('street', 100);
             $table->string('landmark', 100);

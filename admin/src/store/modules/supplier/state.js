@@ -1,5 +1,6 @@
 export default {
   form: {
+    id : null,
     status: "Active",
     legal_name: "",
     register_number: "",
@@ -34,7 +35,7 @@ export default {
     { text: "Email", sortable: false, value: "email" },
     { text: "Phone", sortable: false, value: "phone" },
     { text: "Register Number", sortable: false, value: "register_number" },
-    { text: "Actions", value: "actions", sortable: false }
+    { text: "Actions", align: "right", value: "actions", sortable: false }
   ],
   data: [],
   selected: [],
