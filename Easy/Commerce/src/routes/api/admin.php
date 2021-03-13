@@ -11,6 +11,9 @@ use Easy\Commerce\Http\Controllers\Catalog\Category\Admin\TreeReOrderController 
 // Product
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\IndexController as productIndexController;
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as productStoreController;
+//Supplier
+use Easy\Commerce\Http\Controllers\Supplier\Admin\StoreController as supplierStoreController;
+
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('request/token', [LoginController::class, 'requestToken'])->name('request.token');
@@ -30,4 +33,9 @@ Route::prefix('category')->name('category.')->middleware('auth:sanctum')->group(
 Route::prefix('product')->name('product.')->middleware('auth:sanctum')->group(function () {
     Route::get('/', [productIndexController::class, 'index'])->name('index');
     Route::post('store', [productStoreController::class, 'store'])->name('store');
+});
+// Supplier
+Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(function () {
+    // Route::get('/', [productIndexController::class, 'index'])->name('index');
+    Route::post('store', [supplierStoreController::class, 'store'])->name('store');
 });

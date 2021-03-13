@@ -10,13 +10,14 @@
       <leftMenu></leftMenu>
     </v-navigation-drawer>
 
-    <v-app-bar v-if="$store.state.user.token" app fixed dense>
+    <v-app-bar v-if="$store.state.user.token" flat app fixed dense>
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
         v-if="windowSize.x < 1264"
       ></v-app-bar-nav-icon>
       <v-toolbar-title>Page title</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-switch v-model="$vuetify.theme.dark" class="mt-6"></v-switch>
       <v-btn icon @click="$router.go(-1)">
         <v-icon>mdi-undo-variant</v-icon>
       </v-btn>

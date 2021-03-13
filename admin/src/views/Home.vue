@@ -2,7 +2,7 @@
   <v-container fluid fill-height>
     <v-layout flex align-center justify-center>
       <v-form v-model="valid">
-        <v-card class="mx-auto" max-width="400" min-width="390">
+        <v-card outlined class="mx-auto" max-width="400" min-width="390">
           <v-card-title>
             <v-icon large left> mdi-login </v-icon>
             <span class="title font-weight-light">Login</span>

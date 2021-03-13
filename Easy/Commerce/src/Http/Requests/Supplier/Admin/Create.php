@@ -1,9 +1,12 @@
 <?php
 
+
 namespace Easy\Commerce\Http\Requests\Supplier\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Easy\Commerce\Rules\Status;
+use Easy\Commerce\Rules\Phone;
 class Create extends FormRequest
 {
     /**
@@ -24,12 +27,11 @@ class Create extends FormRequest
     public function rules(): array
     {
         return [
-            'status'                        => 'required',
+            'status'                        => ['required',new Status],
             'legal_name'                    => 'required|string|max:100',
-            'register_number'               => 'required|string|unique:suppliers',
-            'email'                         => 'required|string|unique:suppliers',
-            'phone'                         => 'required|string|unique:suppliers',
-
+            'register_number'               => 'required|max:100',
+            'email'                         => 'required|email|unique:suppliers',
+            'phone'                         => ['required', new Phone ,'min:10','unique:suppliers,phone'],
             'address.building_name'         => 'required|string|max:100',
             'address.floor'                 => 'required|string|max:100',
             'address.street'                => 'required|string|max:100',
@@ -37,17 +39,16 @@ class Create extends FormRequest
             'address.city'                  => 'required|string|max:100',
             'address.state'                 => 'required|string|max:100',
             'address.country'               => 'required|string|max:100',
-            'address.zip'                   => 'required|string|max:100',
-            'address.phone'                 => 'required|string|unique:supplier_addresses',
-
-            'contact_person.job_title'      => 'required|string|max:100',
-            'contact_person.prefix'         => 'nullable|string|max:100',
+            'address.zip'                   => 'required|string|max:20',
+            'address.phone'                 => ['required', new Phone ,'min:10','unique:supplier_addresses,phone'],
+            'contact_person.job_title'      => 'nullable|string|max:20',
+            'contact_person.prefix'         => 'required|string|max:20',
             'contact_person.first_name'     => 'required|string|max:100',
             'contact_person.middle_name'    => 'nullable|string|max:100',
             'contact_person.last_name'      => 'required|string|max:100',
-            'contact_person.email'          => 'required|string|unique:supplier_contact_people',
-            'contact_person.phone'          => 'required|string|unique:supplier_contact_people',
-            'contact_person.gender'         => 'required|string|max:100'
+            'contact_person.email'          => 'required|email|unique:supplier_contact_people,email',
+            'contact_person.phone'          => ['required', new Phone ,'min:10','unique:supplier_contact_people,phone'],
+            'contact_person.gender'         => 'required|string|max:20'
         ];
     }
 }

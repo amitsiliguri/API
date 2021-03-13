@@ -46,10 +46,10 @@ export const submitProductFormData = ({ state, commit, rootGetters }, data) => {
   if (!state.form.id) {
     Product.store(state.form, rootGetters["user/requestHeaders"])
       .then(response => {
-        commit("general/LOADER", false, { root: true });
         if (response.data.success) {
           router.push({ name: "catalogProduct" });
         }
+        commit("general/LOADER", false, { root: true });
       })
       .catch(err => {
         if (err.response) {

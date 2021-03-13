@@ -16,7 +16,7 @@ class CreateSupplierContactPeopleTable extends Migration
         Schema::create('supplier_contact_people', function (Blueprint $table) {
             $table->id();
             $table->boolean('active')->default(true);
-            $table->tinyInteger('type')->default(0);
+            $table->string('type')->default('Admin');
             $table->string('job_title', 100);
             $table->string('prefix', 100)->nullable();
             $table->string('first_name', 100);
