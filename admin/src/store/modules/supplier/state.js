@@ -7,6 +7,7 @@ export default {
     email: "",
     phone: "",
     address: {
+      id : null,
       building_name: "",
       floor: "",
       street: "",
@@ -18,6 +19,7 @@ export default {
       phone: ""
     },
     contact_person: {
+      id : null,
       job_title: "",
       prefix: "",
       first_name: "",

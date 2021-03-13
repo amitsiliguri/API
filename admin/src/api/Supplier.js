@@ -12,4 +12,7 @@ export default {
   edit(id, header) {
     return axiosApi.get(`${END_POINT}/edit/${id}`, header);
   },
+  update(id, data, header) {
+    return axiosApi.put(`${END_POINT}/update/${id}`, data, header);
+  },
 };

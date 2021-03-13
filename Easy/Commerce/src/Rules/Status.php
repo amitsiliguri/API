@@ -32,7 +32,7 @@ class Status implements Rule
             case 'Inactive':
                 return true;
                 break;
-            case 'Block':
+            case 'Blocked':
                 return true;
                 break;
             default:
