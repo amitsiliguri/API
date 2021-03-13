@@ -29,6 +29,30 @@ export const submitSupplierFormData = ({ state, commit, rootGetters }) => {
         }
         commit("general/LOADER", false, { root: true });
     });
+};
 
 
-  };
+export const loadProducts = ({ commit, rootGetters }, data) => {
+    commit("SUPPLIER_TABLE_LOADING");
+    Supplier.get(data.page, data.itemsPerPage, rootGetters["user/requestHeaders"])
+      .then(response => {
+        commit("SET_SUPPLIER", response.data);
+        commit("SUPPLIER_TABLE_LOADING");
+      })
+      .catch(err => {
+        if (err.response) {
+          if (err.response.status == 422 || err.response.status == 401) {
+            commit("general/SHOW_NOTIFICATIONS", err.response.data.message, {
+              root: true
+            });
+          }
+        } else {
+          commit(
+            "general/SHOW_NOTIFICATIONS",
+            "Something went wrong while fetching categories. Please try again.",
+            { root: true }
+          );
+        }
+        commit("SUPPLIER_TABLE_LOADING");
+    });
+};

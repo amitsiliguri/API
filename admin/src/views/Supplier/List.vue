@@ -4,8 +4,15 @@
       <v-col cols="12">
         <v-data-table
           :headers="headers"
-          :items="desserts"
-          :items-per-page="5"
+          :items="items"
+          :loading="loading"
+          :options.sync="options"
+          :footer-props="{
+            'items-per-page-options': itemsPerPageOptions
+          }"
+          :items-per-page="options.itemsPerPage"
+          height="450"
+          loader-height="2"
           class="elevation-1"
           show-select
         >
@@ -24,7 +31,7 @@
                 class="mb-2"
                 to="/supplier/create"
               >
-                Add New Suplier
+                Add New Item
               </v-btn>
             </v-toolbar>
           </template>
@@ -35,97 +42,47 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  data() {
-    return {
-      headers: [
-        { text: "Name", align: "start", sortable: false, value: "name" },
-        { text: "Total Stock", value: "calories" },
-        { text: "Action", align: "right", sortable: false, value: "fat" }
-      ],
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%"
-        },
-        {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%"
-        },
-        {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
-        },
-        {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
-        },
-        {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
-        },
-        {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%"
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
-        }
-      ]
-    };
+  computed: {
+    headers() {
+      return this.$store.state.supplier.headers;
+    },
+    items() {
+      return this.$store.state.supplier.data;
+    },
+    loading() {
+      return this.$store.state.supplier.loading;
+    },
+    itemsPerPageOptions() {
+      return this.$store.state.supplier.itemsPerPageOptions;
+    },
+    options: {
+      // getter
+      get: function() {
+        return this.$store.state.supplier.options;
+      },
+      // setter
+      set: function(newValue) {
+        this.setOptionValues(newValue);
+        this.loadProducts({
+          page: newValue.page,
+          itemsPerPage: newValue.itemsPerPage
+        });
+      }
+    }
+  },
+  mounted() {
+    this.loadProducts({
+      page: 1,
+      itemsPerPage: 10
+    });
+  },
+  methods: {
+    ...mapActions({
+      loadProducts: "supplier/loadProducts",
+      setOptionValues: "supplier/setOptionValues"
+    })
   }
 };
 </script>

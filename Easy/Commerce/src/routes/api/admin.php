@@ -13,6 +13,7 @@ use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\IndexController as prod
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as productStoreController;
 //Supplier
 use Easy\Commerce\Http\Controllers\Supplier\Admin\StoreController as supplierStoreController;
+use Easy\Commerce\Http\Controllers\Supplier\Admin\IndexController as supplierIndexController;
 
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
@@ -36,6 +37,6 @@ Route::prefix('product')->name('product.')->middleware('auth:sanctum')->group(fu
 });
 // Supplier
 Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(function () {
-    // Route::get('/', [productIndexController::class, 'index'])->name('index');
+    Route::get('/', [supplierIndexController::class, 'index'])->name('index');
     Route::post('store', [supplierStoreController::class, 'store'])->name('store');
 });
