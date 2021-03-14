@@ -12,11 +12,10 @@ use Easy\Commerce\Http\Controllers\Catalog\Category\Admin\TreeReOrderController 
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\IndexController as productIndexController;
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as productStoreController;
 //Supplier
-use Easy\Commerce\Http\Controllers\Supplier\Admin\StoreController as supplierStoreController;
-use Easy\Commerce\Http\Controllers\Supplier\Admin\IndexController as supplierIndexController;
-use Easy\Commerce\Http\Controllers\Supplier\Admin\EditController as supplierEditController;
-use Easy\Commerce\Http\Controllers\Supplier\Admin\UpdateController as supplierUpdateController;
+// use Easy\Commerce\Http\Controllers\Supplier\Admin\StoreController as supplierStoreController;
+// use Easy\Commerce\Http\Controllers\Supplier\Admin\UpdateController as supplierUpdateController;
 
+use Easy\Commerce\Http\Controllers\Supplier\Admin\ResourceController as supplierResourceController;
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('request/token', [LoginController::class, 'requestToken'])->name('request.token');
@@ -39,8 +38,8 @@ Route::prefix('product')->name('product.')->middleware('auth:sanctum')->group(fu
 });
 // Supplier
 Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(function () {
-    Route::get('/', [supplierIndexController::class, 'index'])->name('index');
-    Route::get('edit/{id}', [supplierEditController::class, 'edit'])->name('edit');
-    Route::post('store', [supplierStoreController::class, 'store'])->name('store');
-    Route::put('update/{id}', [supplierUpdateController::class, 'update'])->name('update');
+    Route::get('/', [supplierResourceController::class, 'index'])->name('index');
+    Route::get('edit/{id}', [supplierResourceController::class, 'edit'])->name('edit');
+    Route::post('store', [supplierResourceController::class, 'store'])->name('store');
+    Route::put('update/{id}', [supplierResourceController::class, 'update'])->name('update');
 });

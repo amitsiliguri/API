@@ -5,7 +5,19 @@ namespace Easy\Commerce;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
+use Easy\Commerce\Repository\Supplier\SupplierRepository;
+use Easy\Commerce\Contracts\Supplier\SupplierRepositoryInterface;
 
+use Easy\Commerce\Repository\Supplier\SupplierAddressRepository;
+use Easy\Commerce\Contracts\Supplier\SupplierAddressRepositoryInterface;
+
+use Easy\Commerce\Repository\Supplier\SupplierContactPersonRepository;
+use Easy\Commerce\Contracts\Supplier\SupplierContactPersonRepositoryInterface;
+
+/**
+ * Class EasyCommerceServiceProvider
+ * @package Easy\Commerce
+ */
 class EasyCommerceServiceProvider extends ServiceProvider
 {
     /**
@@ -29,11 +41,16 @@ class EasyCommerceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(SupplierRepositoryInterface::class,SupplierRepository::class);
+        $this->app->bind(SupplierAddressRepositoryInterface::class,SupplierAddressRepository::class);
+        $this->app->bind(SupplierContactPersonRepositoryInterface::class,SupplierContactPersonRepository::class);
+
         $this->mergeAuthFileFrom(__DIR__ . '/config/auth.php', 'auth');
 
         Route::group($this->adminRouteConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__ . '/routes/api/admin.php');
         });
+
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
@@ -64,6 +81,11 @@ class EasyCommerceServiceProvider extends ServiceProvider
         $this->app['config']->set($key, $this->multi_array_merge(require $path, $original));
     }
 
+    /**
+     * @param $toMerge
+     * @param $original
+     * @return array
+     */
     protected function multi_array_merge($toMerge, $original): array
     {
         $auth = [];

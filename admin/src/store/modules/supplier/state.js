@@ -1,13 +1,13 @@
 export default {
   form: {
-    id : null,
+    id: null,
     status: "Active",
     legal_name: "",
     register_number: "",
     email: "",
     phone: "",
     address: {
-      id : null,
+      id: null,
       building_name: "",
       floor: "",
       street: "",
@@ -19,7 +19,7 @@ export default {
       phone: ""
     },
     contact_person: {
-      id : null,
+      id: null,
       job_title: "",
       prefix: "",
       first_name: "",
@@ -50,5 +50,5 @@ export default {
     multiSort: false,
     mustSort: false
   },
-  itemsPerPageOptions: [10, 20, 30, 50, 100],
+  itemsPerPageOptions: [10, 20, 30, 50, 100]
 };

@@ -5,6 +5,10 @@ namespace Easy\Commerce\Models\Catalog\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Product
+ * @package Easy\Commerce\Models\Catalog\Product
+ */
 class Product extends Model
 {
     use HasFactory;

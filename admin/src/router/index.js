@@ -27,7 +27,9 @@ const routes = [
     path: "/catalog/category",
     name: "catalogCategory",
     component: () =>
-      import(/* webpackChunkName: "catalogCategory" */ "../views/Catalog/Category.vue")
+      import(
+        /* webpackChunkName: "catalogCategory" */ "../views/Catalog/Category.vue"
+      )
   },
   {
     path: "/catalog/product",
@@ -49,25 +51,33 @@ const routes = [
     path: "/catalog/warehouse",
     name: "CatalogWarehouse",
     component: () =>
-      import(/* webpackChunkName: "CatalogWarehouse" */ "../views/Catalog/Warehouse.vue")
+      import(
+        /* webpackChunkName: "CatalogWarehouse" */ "../views/Catalog/Warehouse.vue"
+      )
   },
   {
     path: "/supplier/list",
     name: "SupplierList",
     component: () =>
-      import(/* webpackChunkName: "SupplierList" */ "../views/Supplier/List.vue")
+      import(
+        /* webpackChunkName: "SupplierList" */ "../views/Supplier/List.vue"
+      )
   },
   {
     path: "/supplier/create",
     name: "SupplierCreate",
     component: () =>
-      import(/* webpackChunkName: "SupplierCreate" */ "../views/Supplier/Create.vue")
+      import(
+        /* webpackChunkName: "SupplierCreate" */ "../views/Supplier/Create.vue"
+      )
   },
   {
     path: "/supplier/edit",
     name: "SupplierEdit",
     component: () =>
-      import(/* webpackChunkName: "SupplierEdit" */ "../views/Supplier/Edit.vue")
+      import(
+        /* webpackChunkName: "SupplierEdit" */ "../views/Supplier/Edit.vue"
+      )
   },
   {
     path: "/supplier/purchase/list",

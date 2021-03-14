@@ -34,7 +34,8 @@ class SupplierAddress extends Model
         'state',
         'country',
         'zip',
-        'phone'
+        'phone',
+        'supplier_id'
     ];
 
     /**

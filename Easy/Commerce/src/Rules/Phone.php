@@ -4,6 +4,10 @@ namespace Easy\Commerce\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
+/**
+ * Class Phone
+ * @package Easy\Commerce\Rules
+ */
 class Phone implements Rule
 {
     /**
@@ -19,11 +23,11 @@ class Phone implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
         if (preg_match("/^([0-9\s\-\+\(\)]*)$/",$value)) {
             return true;
@@ -37,7 +41,7 @@ class Phone implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'The phone number format is wrong.';
     }

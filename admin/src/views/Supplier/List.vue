@@ -41,8 +41,6 @@
               mdi-pencil
             </v-icon>
           </template>
-
-
         </v-data-table>
       </v-col>
     </v-row>

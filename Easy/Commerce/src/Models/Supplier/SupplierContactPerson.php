@@ -36,6 +36,7 @@ class SupplierContactPerson extends Model
         'email',
         'phone',
         'gender',
+        'supplier_id'
     ];
 
     /**

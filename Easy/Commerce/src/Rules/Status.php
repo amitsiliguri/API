@@ -4,6 +4,10 @@ namespace Easy\Commerce\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
+/**
+ * Class Status
+ * @package Easy\Commerce\Rules
+ */
 class Status implements Rule
 {
     /**
@@ -19,20 +23,16 @@ class Status implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
         switch ($value) {
-            case 'Active':
-                return true;
-                break;
             case 'Inactive':
-                return true;
-                break;
             case 'Blocked':
+            case 'Active':
                 return true;
                 break;
             default:
@@ -46,7 +46,7 @@ class Status implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'We don\'t recognize this status. Please insert a valid status.';
     }

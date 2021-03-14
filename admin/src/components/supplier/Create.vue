@@ -306,9 +306,7 @@ export default {
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
       ],
-      phoneRules: [
-        v => !!v || "This is a required field"
-      ],
+      phoneRules: [v => !!v || "This is a required field"],
       addressBuildingNameRules: [
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
@@ -341,22 +339,20 @@ export default {
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
       ],
-      addressPhoneRules: [
-        v => !!v || "This is a required field"
-      ],
+      addressPhoneRules: [v => !!v || "This is a required field"],
       contactPersonJobTitleRules: [
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
       ],
-      contactPersonPrefixRules: [
-        v => !!v || "This is a required field"
-      ],
+      contactPersonPrefixRules: [v => !!v || "This is a required field"],
       contactPersonFirstNameRules: [
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
       ],
       contactPersonMiddleNameRules: [
-        v => (v.length >= 0 && v.length <= 100) || "Title must be less than 100 characters"
+        v =>
+          (v.length >= 0 && v.length <= 100) ||
+          "Title must be less than 100 characters"
       ],
       contactPersonLastNameRules: [
         v => !!v || "This is a required field",
@@ -366,12 +362,8 @@ export default {
         v => !!v || "This is a required field",
         v => (v && v.length <= 100) || "Title must be less than 100 characters"
       ],
-      contactPersonPhoneRules: [
-        v => !!v || "This is a required field"
-      ],
-      contactPersonGenderRules: [
-        v => !!v || "This is a required field"
-      ],
+      contactPersonPhoneRules: [v => !!v || "This is a required field"],
+      contactPersonGenderRules: [v => !!v || "This is a required field"]
     }
   }),
   computed: {
