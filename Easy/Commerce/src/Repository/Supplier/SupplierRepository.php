@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Easy\Commerce\Repository\Supplier;
 
 use Easy\Commerce\Models\Supplier\Supplier;
@@ -22,7 +21,7 @@ class SupplierRepository implements SupplierRepositoryInterface
      */
     public function all(int $itemsPerPage)
     {
-        return Supplier::orderBy('id', 'desc')->paginate($itemsPerPage);
+        return Supplier::orderBy('id', 'desc')->simplePaginate($itemsPerPage);
     }
 
     /**
@@ -78,7 +77,7 @@ class SupplierRepository implements SupplierRepositoryInterface
      * @param array $inputs
      * @return Object
      */
-    protected function save(Object $model, array $inputs)
+    protected function save(Object $model, array $inputs) : Object
     {
         $model->status           = $inputs['status']; 
         $model->legal_name       = $inputs['legal_name'];

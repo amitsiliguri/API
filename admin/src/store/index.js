@@ -5,6 +5,7 @@ import general from "@/store/modules/general";
 import catalogCategory from "@/store/modules/catalog/category";
 import catalogProduct from "@/store/modules/catalog/product";
 import supplier from "@/store/modules/supplier";
+import supplierAddress from "@/store/modules/supplier/address";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     general,
     catalogCategory,
     catalogProduct,
-    supplier
+    supplier,
+    supplierAddress
   }
 });

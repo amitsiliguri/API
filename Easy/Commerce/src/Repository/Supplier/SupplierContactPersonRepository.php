@@ -20,7 +20,10 @@ class SupplierContactPersonRepository implements SupplierContactPersonRepository
      */
     public function all(int $itemsPerPage, int $supplierId)
     {
-        return SupplierContactPerson::orderBy('id', 'desc')->paginate($itemsPerPage);
+        return SupplierContactPerson::orderBy('id', 'desc')
+            ->where('supplier_id',$supplierId)
+            ->where('type','!=','Admin')
+            ->simplePaginate($itemsPerPage);
     }
 
     /**
@@ -79,6 +82,7 @@ class SupplierContactPersonRepository implements SupplierContactPersonRepository
         $model->phone           = $inputs['phone'];
         $model->gender          = $inputs['gender'];
         $model->supplier_id     = $inputs['supplier_id'];
+        
         $model->save();
         
         return $model;

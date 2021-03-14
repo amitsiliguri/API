@@ -266,14 +266,14 @@
       <v-expansion-panel v-if="formData.id">
         <v-expansion-panel-header>Contact People</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <contactPeople />
+          <contactPeople :supplierId="formData.id" />
         </v-expansion-panel-content>
       </v-expansion-panel>
 
       <v-expansion-panel v-if="formData.id">
         <v-expansion-panel-header>Supply Addresses</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <supplyAddresses />
+          <supplyAddresses :supplierId="formData.id" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>

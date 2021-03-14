@@ -1,8 +1,15 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
-    :items-per-page="5"
+    :items="items"
+    :loading="loading"
+    :options.sync="options"
+    :footer-props="{
+      'items-per-page-options': itemsPerPageOptions
+    }"
+    :items-per-page="options.itemsPerPage"
+    loader-height="2"
+    class="elevation-1"
     show-select
   >
     <template v-slot:top>
@@ -28,59 +35,87 @@
               <v-container>
                 <v-row justify="center">
                   <v-col cols="12" class="py-0">
-                    <v-select
-                      :items="['Mr.', 'Ms.', 'Mrs.']"
-                      label="Prefix"
-                      dense
-                      outlined
-                    ></v-select>
-                  </v-col>
-                  <v-col cols="12" class="py-0">
                     <v-text-field
                       :counter="50"
+                      v-model="formData.building_name"
                       dense
                       outlined
-                      label="First Name"
+                      label="Building Name"
                       required
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field
+                      v-model="formData.floor"
                       :counter="50"
                       dense
                       outlined
-                      label="Middle Name"
+                      label="Floor"
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field
+                      v-model="formData.street"
                       :counter="50"
                       dense
                       outlined
-                      label="Last Name"
+                      label="Street"
                       required
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field
+                      v-model="formData.landmark"
                       :counter="50"
                       dense
                       outlined
-                      label="Job Title"
+                      label="Landmark"
                       required
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field
+                      v-model="formData.city"
                       :counter="50"
                       dense
                       outlined
-                      label="Email"
+                      label="City"
                       required
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field
+                      v-model="formData.state"
+                      :counter="50"
+                      dense
+                      outlined
+                      label="State"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" class="py-0">
+                    <v-text-field
+                      v-model="formData.country"
+                      :counter="50"
+                      dense
+                      outlined
+                      label="Country"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" class="py-0">
+                    <v-text-field
+                      v-model="formData.zip"
+                      :counter="50"
+                      dense
+                      outlined
+                      label="Zip"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" class="py-0">
+                    <v-text-field
+                      v-model="formData.phone"
                       :counter="50"
                       dense
                       outlined
@@ -94,10 +129,10 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text>
+              <v-btn color="blue darken-1" text @click="dialog = false">
                 Cancel
               </v-btn>
-              <v-btn color="blue darken-1" text>
+              <v-btn color="blue darken-1" text @click="validate()">
                 Save
               </v-btn>
             </v-card-actions>
@@ -105,110 +140,84 @@
         </v-dialog>
       </v-toolbar>
     </template>
+    <template v-slot:[`item.actions`]="{ item }">
+      <v-icon small class="mr-2" @click="editSupplierAddress(item)">
+        mdi-pencil
+      </v-icon>
+    </template>
   </v-data-table>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  data() {
-    return {
-      dialog: false,
-      headers: [
-        {
-          text: "Dessert (100g serving)",
-          align: "start",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" }
-      ],
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%"
-        },
-        {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%"
-        },
-        {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
-        },
-        {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
-        },
-        {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
-        },
-        {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%"
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
-        }
-      ]
-    };
+  props: {
+    supplierId: {
+      type: Number,
+      required: true
+    }
+  },
+  computed: {
+    formData() {
+      return this.$store.state.supplierAddress.form;
+    },
+    headers() {
+      return this.$store.state.supplierAddress.headers;
+    },
+    items() {
+      return this.$store.state.supplierAddress.data;
+    },
+    loading() {
+      return this.$store.state.supplierAddress.loading;
+    },
+    itemsPerPageOptions() {
+      return this.$store.state.supplierAddress.itemsPerPageOptions;
+    },
+    dialog: {
+      get() {
+        return this.$store.state.supplierAddress.dialog;
+      },
+      set: function(newValue) {
+        this.toggleModal(newValue);
+      }
+    },
+    options: {
+      // getter
+      get: function() {
+        return this.$store.state.supplierAddress.options;
+      },
+      // setter
+      set: function(newValue) {
+        let self = this;
+        self.setOptionValues(newValue);
+        self.loadSuppliersAddress({
+          page: newValue.page,
+          itemsPerPage: newValue.itemsPerPage
+        });
+      }
+    }
+  },
+  mounted() {
+    let self = this;
+    self.setSupplierId(self.supplierId);
+    self.loadSuppliersAddress({
+      page: 1,
+      itemsPerPage: 10
+    });
+  },
+  methods: {
+    ...mapActions({
+      loadSuppliersAddress: "supplierAddress/loadSuppliersAddress",
+      setOptionValues: "supplierAddress/setOptionValues",
+      toggleModal: "supplierAddress/toggleModal",
+      submitSupplierFormData: "supplierAddress/submitSupplierFormData",
+      setSupplierId: "supplierAddress/setSupplierId",
+      editSupplierAddress: "supplierAddress/editSupplierAddress"
+    }),
+    validate() {
+      let self = this;
+      self.submitSupplierFormData(self.supplierId);
+    }
   }
 };
 </script>

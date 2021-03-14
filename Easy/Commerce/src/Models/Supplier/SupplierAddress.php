@@ -27,6 +27,7 @@ class SupplierAddress extends Model
      */
     protected $fillable = [
         'building_name',
+        'type',
         'floor',
         'street',
         'landmark',

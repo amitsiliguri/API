@@ -1,4 +1,4 @@
-import Supplier from "@/api/Supplier";
+import Supplier from "@/api/Supplier/Supplier";
 import router from "@/router/index";
 
 export const submitSupplierFormData = ({ state, commit, rootGetters }) => {
