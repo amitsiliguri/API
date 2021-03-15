@@ -14,6 +14,7 @@ use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as prod
 //Supplier
 use Easy\Commerce\Http\Controllers\Supplier\Admin\ResourceController as supplierResourceController;
 use Easy\Commerce\Http\Controllers\Supplier\Address\Admin\ResourceController as supplierAddressResourceController;
+use Easy\Commerce\Http\Controllers\Supplier\ContactPerson\Admin\ResourceController as supplierContactPersonResourceController;
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('request/token', [LoginController::class, 'requestToken'])->name('request.token');
@@ -40,6 +41,11 @@ Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(
         Route::get('/{supplier_id}', [supplierAddressResourceController::class, 'index'])->name('index');
         Route::post('store', [supplierAddressResourceController::class, 'store'])->name('store');
         Route::put('update/{id}', [supplierAddressResourceController::class, 'update'])->name('update');
+    });
+    Route::prefix('contact/person')->name('contact.person.')->group(function () {
+        Route::get('/{supplier_id}', [supplierContactPersonResourceController::class, 'index'])->name('index');
+        Route::post('store', [supplierContactPersonResourceController::class, 'store'])->name('store');
+        Route::put('update/{id}', [supplierContactPersonResourceController::class, 'update'])->name('update');
     });
     Route::get('/', [supplierResourceController::class, 'index'])->name('index');
     Route::get('edit/{id}', [supplierResourceController::class, 'edit'])->name('edit');

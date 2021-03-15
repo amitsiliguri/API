@@ -191,6 +191,7 @@ export default {
         let self = this;
         self.setOptionValues(newValue);
         self.loadSuppliersAddress({
+          id : self.supplierId,
           page: newValue.page,
           itemsPerPage: newValue.itemsPerPage
         });
@@ -199,11 +200,14 @@ export default {
   },
   mounted() {
     let self = this;
+
     self.setSupplierId(self.supplierId);
+
     self.loadSuppliersAddress({
-      page: 1,
-      itemsPerPage: 10
-    });
+        id : self.supplierId,
+        page: 1,
+        itemsPerPage: 10
+      });
   },
   methods: {
     ...mapActions({

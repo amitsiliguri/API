@@ -82,7 +82,8 @@ class SupplierContactPersonRepository implements SupplierContactPersonRepository
         $model->phone           = $inputs['phone'];
         $model->gender          = $inputs['gender'];
         $model->supplier_id     = $inputs['supplier_id'];
-        
+        $model->type            = $inputs['type'];
+
         $model->save();
         
         return $model;
