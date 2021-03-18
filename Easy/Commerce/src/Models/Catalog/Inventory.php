@@ -1,11 +1,11 @@
 <?php
 
-namespace Easy\Commerce\Models\Supplier\Purchase;
+namespace Easy\Commerce\Models\Catalog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseItems extends Model
+class Inventory extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class PurchaseItems extends Model
      *
      * @var string
      */
-    protected $table = 'purchase_items';
+    protected $table = 'inventories';
 
     /**
      * The primary key associated with the table.
@@ -29,18 +29,20 @@ class PurchaseItems extends Model
      * @var array
      */
     protected $fillable = [
-        'sku',
-        'title',
-        'purchase_cost_per_unit',
-        'quantity',
+        'purchase_quantity',
+        'available_quantity',
+        'expiry_date',
+        'product_id',
+        'warehouse_id',
+        'purchase_item_id'
     ];
 
     /**
      * Get the purchase number of this purchase item.
      */
-    public function purchase(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function purchaseItems(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo('Easy\Commerce\Models\Supplier\Purchase\Purchase', 'purchase_id', 'id');
+        return $this->belongsTo('Easy\Commerce\Models\Supplier\Purchase\PurchaseItems', 'purchase_item_id', 'id');
     }
 
     /**
@@ -52,10 +54,10 @@ class PurchaseItems extends Model
     }
 
     /**
-     * The Purchase Items that belong to the warehouse.
+     * Get the product of this purchase item.
      */
-    public function warehouses(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function warehouse(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsToMany('Easy\Commerce\Models\Catalog\Warehouse','inventories',  'purchase_item_id', 'warehouse_id')->withPivot('purchase_quantity','available_quantity','expiry_date');
+        return $this->belongsTo('Easy\Commerce\Models\Catalog\Warehouse\Warehouse', 'warehouse_id', 'id');
     }
 }

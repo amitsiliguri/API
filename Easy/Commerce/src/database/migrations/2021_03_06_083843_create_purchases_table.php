@@ -15,6 +15,7 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('increment_id');
             $table->double('sub_total', 8, 4);
             $table->double('tax', 8, 4);
             $table->double('shipping_cost', 8, 4);

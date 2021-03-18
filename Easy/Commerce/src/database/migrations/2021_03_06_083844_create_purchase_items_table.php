@@ -15,14 +15,16 @@ class CreatePurchaseItemsTable extends Migration
     {
         Schema::create('purchase_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->foreignId('purchase_id');
+            $table->string('sku', 100);
+            $table->string('title', 100);
             $table->double('purchase_cost_per_unit', 8, 4);
+            $table->foreignId('product_id')->nullable();
+            $table->foreignId('purchase_id');
             $table->timestamps();
         });
 
         Schema::table('purchase_items', function (Blueprint $table) {
-            $table->foreign('product_id')->references('id')->on('products')->constrained()->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('purchase_id')->references('id')->on('purchases')->constrained()->onDelete('cascade');
         });
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Easy\Commerce\Models\Manufacturer\Purchase;
+namespace Easy\Commerce\Models\Supplier\Purchase;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Purchase extends Model
 {
     use HasFactory;
+    
     /**
      * The table associated with the model.
      *
@@ -26,6 +27,7 @@ class Purchase extends Model
      * @var array
      */
     protected $fillable = [
+        'increment_id',
         'sub_total',
         'tax',
         'shipping_cost',
@@ -35,13 +37,27 @@ class Purchase extends Model
      */
     public function purchaseItems(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('Easy\Commerce\Models\Vendor\Purchase\PurchaseItems', 'purchase_id', 'id');
+        return $this->hasMany('Easy\Commerce\Models\Supplier\Purchase\PurchaseItems', 'purchase_id', 'id');
     }
     /**
-     * Get the vendor of this purchase.
+     * Get the Supplier of this purchase.
      */
-    public function vendor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function supplier(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo('Easy\Commerce\Models\Vendor\Vendor', 'vendor_id', 'id');
+        return $this->belongsTo('Easy\Commerce\Models\Supplier\Supplier', 'supplier_id', 'id');
+    }
+    /**
+     * Get the Supplier Address of this purchase.
+     */
+    public function supplierAddress(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo('Easy\Commerce\Models\Supplier\SupplierAddress', 'supplier_shipping_addresses_id', 'id');
+    }
+    /**
+     * Get the Supplier Address of this purchase.
+     */
+    public function supplierContactPerson(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo('Easy\Commerce\Models\Supplier\SupplierContactPerson', 'supplier_contact_people_id', 'id');
     }
 }
