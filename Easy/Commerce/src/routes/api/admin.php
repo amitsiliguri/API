@@ -11,15 +11,18 @@ use Easy\Commerce\Http\Controllers\Catalog\Category\Admin\TreeReOrderController 
 // Product
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\IndexController as productIndexController;
 use Easy\Commerce\Http\Controllers\Catalog\Product\Admin\StoreController as productStoreController;
+// Warehouse
+use Easy\Commerce\Http\Controllers\Catalog\Warehouse\Admin\ResourceController as warehouseResourceController; 
 //Supplier
 use Easy\Commerce\Http\Controllers\Supplier\Admin\ResourceController as supplierResourceController;
 use Easy\Commerce\Http\Controllers\Supplier\Address\Admin\ResourceController as supplierAddressResourceController;
 use Easy\Commerce\Http\Controllers\Supplier\ContactPerson\Admin\ResourceController as supplierContactPersonResourceController;
+
+
 // admin user
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('request/token', [LoginController::class, 'requestToken'])->name('request.token');
 });
-
 // Category
 Route::prefix('category')->name('category.')->middleware('auth:sanctum')->group(function () {
     Route::prefix('tree')->name('tree.')->group(function () {
@@ -51,4 +54,10 @@ Route::prefix('supplier')->name('supplier.')->middleware('auth:sanctum')->group(
     Route::get('edit/{id}', [supplierResourceController::class, 'edit'])->name('edit');
     Route::post('store', [supplierResourceController::class, 'store'])->name('store');
     Route::put('update/{id}', [supplierResourceController::class, 'update'])->name('update');
+});
+// Warehouse
+Route::prefix('warehouse')->name('warehouse.')->middleware('auth:sanctum')->group(function () {
+    Route::get('/', [warehouseResourceController::class, 'index'])->name('index');
+    Route::post('store', [warehouseResourceController::class, 'store'])->name('store');
+    Route::put('update/{id}', [warehouseResourceController::class, 'update'])->name('update');
 });

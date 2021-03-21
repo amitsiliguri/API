@@ -82,8 +82,9 @@ class SupplierAddressRepository implements SupplierAddressRepositoryInterface
         $model->zip               = $inputs['zip'];
         $model->phone             = $inputs['phone'];
         $model->supplier_id       = $inputs['supplier_id'];
-        $model->type              = $inputs['type'];
-        
+        if (array_key_exists("type",$inputs)) {
+            $model->type          = $inputs['type'];
+        }        
         $model->save();
         
         return $model;

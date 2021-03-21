@@ -115,17 +115,23 @@ class ResourceController extends Controller
         $supplierContactPerson = null;
 
         $inputs = $request->all();
-        $supplier = $this->_supplierRepositoryInterface->update($inputs, $id);
+        try {
+            $supplier = $this->_supplierRepositoryInterface->update($inputs, $id);
+            if ($supplier->id) {
+                $inputs['address']['supplier_id'] = $supplier->id;
+                $inputs['contact_person']['supplier_id'] = $supplier->id;
+                $supplierAddress = $this->_supplierAddressRepositoryInterface->update($inputs['address'], $inputs['address']['id']);
+                $supplierContactPerson = $this->_supplierContactPersonRepositoryInterface->update($inputs['contact_person'], $inputs['contact_person']['id']);
+            }
 
-        if ($supplier->id) {
-            $inputs['address']['supplier_id'] = $supplier->id;
-            $inputs['contact_person']['supplier_id'] = $supplier->id;
-            $supplierAddress = $this->_supplierAddressRepositoryInterface->update($inputs['address'], $inputs['address']['id']);
-            $supplierContactPerson = $this->_supplierContactPersonRepositoryInterface->update($inputs['contact_person'], $inputs['contact_person']['id']);
+            return response()->json([
+                'success' => $supplier->id && $supplierAddress->id && $supplierContactPerson->id
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false
+            ], 200);
         }
-
-        return response()->json([
-            'success' => $supplier->id && $supplierAddress->id && $supplierContactPerson->id
-        ], 200);
+        
     }
 }
